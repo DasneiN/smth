@@ -1,0 +1,185 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+body {
+  background: #85a5d4;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  padding-top: 100px;
+}
+
+.btn {
+  $btn-bg: #0069d9;
+
+  background-color: lighten($btn-bg, 5%);
+  color: #fff;
+  font-size: 0.8em;
+  padding: 0.75em 2.5em;
+  border-radius: 0.25em;
+  margin-top: 1.2em;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $btn-bg;
+  }
+}
+
+.tariffs {
+  margin: 0 auto;
+  width: 96%;
+  max-width: 900px;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+
+  &__block {
+    width: 33.33%;
+    height: auto;
+    padding: 0px 4.5% 15px;
+    border-radius: 4px;
+    text-align: center;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &__icon {
+      background-position: bottom center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 68px;
+      width: 68px;
+      display: block;
+      margin: 20px auto 0;
+
+      $icons: device, laptop, monitor;
+      @each $icon in $icons {
+        &-#{$icon} {
+          background-image: url(./img/#{$icon}.svg);
+        }
+      }
+    }
+
+    &__title {
+      text-transform: uppercase;
+      color: #5572d6;
+      font-size: 1.17em;
+      margin-top: 2.1em;
+      letter-spacing: 0.2em;
+      line-height: 1.4em;
+      font-weight: 600;
+    }
+
+    &__description {
+      font-size: 0.8em;
+      font-weight: 400;
+      color: #a7a9b4;
+      line-height: 1.5em;
+      margin-top: 1.2em;
+    }
+
+    &__price {
+      text-align: center;
+      color: #5572d6;
+      font-size: 1.1em;
+      margin-top: 1em;
+
+      sup {
+        vertical-align: initial;
+        position: relative;
+        top: -1em;
+        left: 0.2em;
+      }
+
+      b {
+        font-size: 1.8em;
+        font-weight: 400;
+      }
+
+      span {
+        font-size: 0.8em;
+      }
+    }
+  }
+}
+
+.modal__container {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  display: none;
+
+  &_visible {
+    display: flex;
+  }
+
+  .modal__block {
+    width: 95%;
+    height: auto;
+    max-height: 95%;
+    max-width: 360px;
+    background-color: #fff;
+    border-radius: 4px;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+
+    &__close {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 1em;
+      height: 1em;
+      background: url(./img/cross.svg) no-repeat center center / contain;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    &__title {
+      font-size: 1em;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tariffs {
+    &__block {
+      width: 100%;
+
+      & + & {
+        margin-top: 20px;
+      }
+    }
+  }
+}
